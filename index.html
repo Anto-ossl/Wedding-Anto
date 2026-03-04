@@ -96,7 +96,7 @@
         .guest-box h2 {
             font-size: 2rem;
             margin: 10px 0;
-            color: var(--light); /* Nama tamu dibuat putih agar kontras dengan emas */
+            color: var(--light);
         }
 
         /* Container Section */
@@ -173,7 +173,7 @@
 
         <div class="guest-box">
             <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
-            <h2>Pa Surya</h2>
+            <h2 id="nama-tamu">Tamu Undangan</h2>
             <p>di Tempat</p>
         </div>
     </header>
@@ -250,14 +250,11 @@
 
         let angle = 0;
         function update() {
-            // Mengubah kecepatan rotasi angin menjadi lebih lambat
             angle += 0.005; 
             for (let i = 0; i < particles.length; i++) {
                 let p = particles[i];
                 
-                // Kecepatan jatuh (Y) dikalikan 0.3 agar sangat lambat dan melayang
                 p.y += (Math.cos(angle + p.d) + 1 + p.r / 2) * 0.3; 
-                // Goyangan ke samping (X) dikalikan 0.5 agar lebih halus
                 p.x += Math.sin(angle) * 0.5;
 
                 if (p.x > width + 5 || p.x < -5 || p.y > height) {
@@ -279,6 +276,15 @@
         
         init();
         draw();
+    </script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaTamu = urlParams.get('to');
+        
+        if (namaTamu) {
+            document.getElementById('nama-tamu').innerText = namaTamu;
+        }
     </script>
 
 </body>
