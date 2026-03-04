@@ -286,6 +286,19 @@
             document.getElementById('nama-tamu').innerText = namaTamu;
         }
     </script>
+    <script>
+    // 1. Membaca semua parameter yang ada di URL web Anda
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // 2. Mengambil teks apa pun yang ditulis setelah kata 'to='
+    const namaTamu = urlParams.get('to');
+    
+    // 3. Jika parameter 'to' ada isinya, otomatis ganti teks di HTML
+    if (namaTamu) {
+        document.getElementById('nama-tamu').innerText = namaTamu;
+    }
+    </script>
+    
 
 </body>
 </html>
